@@ -26,7 +26,7 @@ public class ExamPortalServerApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println("program started");
+		//System.out.println("program started");
 		
 		/*
 		 * User user=new User();
