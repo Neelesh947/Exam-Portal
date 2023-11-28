@@ -1,5 +1,7 @@
 package com.examPortal.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,6 +10,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,7 @@ import com.examPortal.config.JwtUtils;
 import com.examPortal.helper.UserNotFoundException;
 import com.examPortal.model.JwtRequest;
 import com.examPortal.model.JwtResponse;
+import com.examPortal.model.User;
 import com.examPortal.serviceImpl.UserDetailsSecurityServiceImpl;
 
 @RestController
@@ -69,6 +73,14 @@ public class AuthenticateController {
 	            throw new Exception("Invalid Credentials " + e.getMessage());
 	        }
 	    }
+	 
+	 
+	 //return the details of the user who is currently login
+	 @GetMapping("/current-user")
+	 public User getCurrentUser(Principal principal)
+	 {
+		 return ((User)this.userDetailsService.loadUserByUsername(principal.getName()));
+	 }
 	 
 
 }
