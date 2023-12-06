@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.examPortal.service.QuizService;
 
 @RestController
 @RequestMapping("/question")
+@CrossOrigin("*")
 public class QuestionController {
 
 	@Autowired
@@ -68,6 +70,18 @@ public class QuestionController {
 		Collections.shuffle(list);
 		return ResponseEntity.ok(list);		
 	}
+	
+	//get all quiz question in admin
+	
+	@GetMapping("/quiz/all/{qid}")
+	public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid)
+	{
+		Quiz quiz=new Quiz();
+		quiz.setQid(qid);		
+		Set<Questions> questionsOfQuiz=this.questionService.getQuestionOfQuiz(quiz);
+		return ResponseEntity.ok(questionsOfQuiz);
+	}
+	
 	
 	//get single question
 	@GetMapping("/{questId}")
