@@ -24,5 +24,10 @@ public interface QuizService {
 
 	public List<Quiz> getQizzesOfCategory(Category cat);
 
+	//get normal user quizees dor active category
+	public List<Quiz> getActiveQuizzes();
+	
+	public List<Quiz> getActiveQuizzesOfCategory(Category c);
+	
 	
 }
