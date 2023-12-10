@@ -1,5 +1,6 @@
 package com.examPortal.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.examPortal.model.exam.Category;
 import com.examPortal.model.exam.Quiz;
 import com.examPortal.service.QuizService;
 
@@ -65,5 +67,14 @@ public class QuizController {
 	{
 		this.quizService.deleteQuiz(quizId);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+	
+	//get quiz from the category
+	@GetMapping("/category/{cid}")
+	public List<Quiz> loadQuizessOfTheCategories(@PathVariable("cid") Long cid )
+	{
+		Category cat=new Category();
+		cat.setCid(cid);
+		return this.quizService.getQizzesOfCategory(cat);
 	}
 }

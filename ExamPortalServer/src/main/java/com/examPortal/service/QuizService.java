@@ -1,7 +1,8 @@
 package com.examPortal.service;
 
-import java.util.Set;
+import java.util.*;
 
+import com.examPortal.model.exam.Category;
 import com.examPortal.model.exam.Quiz;
 
 public interface QuizService {
@@ -20,5 +21,8 @@ public interface QuizService {
 	
 	//delete Quiz By id
 	public void deleteQuiz(Long quizId);
+
+	public List<Quiz> getQizzesOfCategory(Category cat);
+
 	
 }
