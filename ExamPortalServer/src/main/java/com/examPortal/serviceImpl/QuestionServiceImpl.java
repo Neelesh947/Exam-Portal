@@ -58,6 +58,12 @@ public class QuestionServiceImpl implements QuestionService{
 		
 		return this.questionRepository.findByQuiz(quiz);
 	}
+
+	@Override
+	public Questions get(Long questionId) {
+		// TODO Auto-generated method stub
+		return this.questionRepository.getOne(questionId);
+	}
 	
 	
 }

@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +33,11 @@ public class Questions {
 	private String option3;
 	private String option4;
 	
+	@JsonIgnore
 	private String answer;
+	
+	@Transient
+	private String givenAnswer;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)

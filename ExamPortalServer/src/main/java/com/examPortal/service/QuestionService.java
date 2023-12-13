@@ -25,4 +25,7 @@ public interface QuestionService {
 	
 	//get list questions from the quiz
 	public Set<Questions> getQuestionOfQuiz(Quiz quiz);
+	
+	
+	public Questions get(Long questionId);
 }
