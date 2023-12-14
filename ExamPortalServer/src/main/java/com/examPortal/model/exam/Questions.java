@@ -33,7 +33,7 @@ public class Questions {
 	private String option3;
 	private String option4;
 	
-	@JsonIgnore
+	
 	private String answer;
 	
 	@Transient
